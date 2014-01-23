@@ -12,6 +12,7 @@ Facedemo::Application.routes.draw do
 
     member do
       get :dashboard
+      post :add_activity
     end
     
   end

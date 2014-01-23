@@ -12,7 +12,7 @@ gem 'mysql2'
 gem 'sqlite3'
 gem 'debugger'
 gem 'holidays'
-gem "koala", "~> 1.8.0rc1"
+gem 'koala', '~> 1.8.0rc1'
 
 # Gems used only for assets and not required
 # in production environments by default.
