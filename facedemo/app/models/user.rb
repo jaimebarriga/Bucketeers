@@ -15,14 +15,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def super_token # from developers.facebook.com/tools/explorer
-    "CAACEdEose0cBAIAIhaMGCZC0B9yccbHE9JT4w8AZBZC7KFG4nlsRsBJdHdZBOTRP4pWpF45lENlo0kIfFZAhYpiNPQcdQ0brafNEZCZBortiqQCQOEZCUxxYtlZCRj09OLl5KX15hXNqZCqYchUh0fbauCkGKBOydVYibBrCSWHTkcaWpGQvwwdUE2XgprdJw1ItKAZBsA9bZCz8iAZDZD"
-  end
+  # def super_token # from developers.facebook.com/tools/explorer
+  #   "CAACEdEose0cBAIAIhaMGCZC0B9yccbHE9JT4w8AZBZC7KFG4nlsRsBJdHdZBOTRP4pWpF45lENlo0kIfFZAhYpiNPQcdQ0brafNEZCZBortiqQCQOEZCUxxYtlZCRj09OLl5KX15hXNqZCqYchUh0fbauCkGKBOydVYibBrCSWHTkcaWpGQvwwdUE2XgprdJw1ItKAZBsA9bZCz8iAZDZD"
+  # end
 
   def graph_api
-    token = self.super_token
-    # token = self.oauth_token
-    Koala::Facebook::API.new(token)
+    Koala::Facebook::API.new(self.oauth_token)
   end
 
   def profile
@@ -37,17 +35,25 @@ class User < ActiveRecord::Base
     self.graph_api.get_connections("me", "mutualfriends/1026310006")
   end
 
+  def friends_who_installed_app
+    friends = self.graph_api.graph_call("/#{self.uid}/friends?fields=installed")
+    friends.map{|friend| friend["id"]}
+  end
+
   def my(request)
     self.graph_api.get_connections("me",request)
   end
 
+  def graph(command)
+    self.graph_api.graph_call(command)
+  end
 
   def create_event(name, invitees)
     event = self.graph_api.graph_call("/me/events",{
       name: name, 
       start_time:   "2014-02-17", # sample date 
       privacy_type: "CLOSED",
-      access_token: self.super_token}, "POST")
+      access_token: self.oauth_token}, "POST")
 
     invite_to_event(event["id"], invitees)
 
@@ -57,7 +63,7 @@ class User < ActiveRecord::Base
   def invite_to_event(event_id, invitees)
     self.graph_api.graph_call("/#{event_id}/invited",{
       users: invitees.map{|invitee| invitee.uid},
-      access_token: self.super_token}, "POST")
+      access_token: self.oauth_token}, "POST")
   end
 
 end

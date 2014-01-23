@@ -3,8 +3,14 @@
 
 %p= "Hello"
 
-%p= @user.profile
+%p
+  = "Profile"
+  = @user.profile
 
-%p= @user.friends
+%p
+  = "Friends"
+  = @user.friends
 
-
+%p
+  = "Friends Who Installed App"
+  = @user.friends_who_installed_app
