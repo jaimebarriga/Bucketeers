@@ -48,10 +48,10 @@ class User < ActiveRecord::Base
     self.graph_api.graph_call(command)
   end
 
-  def create_event(name, invitees)
+  def create_event(name, date, invitees)
     event = self.graph_api.graph_call("/me/events",{
       name: name, 
-      start_time:   "2014-02-17", # sample date 
+      start_time: date, # sample date: "2014-02-17"
       privacy_type: "CLOSED",
       access_token: self.oauth_token}, "POST")
 
