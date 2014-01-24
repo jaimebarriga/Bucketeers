@@ -1,0 +1,108 @@
+<div id="global-container">
+	<div class="content">
+		<div class="large-7 columns">
+			<h1 class="logo">interBucket</h1>
+			<div class="title">Your Online Bucketlist</div>
+			<div class="description">
+				<div>
+					<i class="fa fa-list-ol"></i>
+					<span><b>Create and manage</b> your personal bucket list</span>
+				</div>
+				<div>
+					<i class="fa fa-users"></i>
+					<span><b>View lists of your friends</b> and compare</span>
+				</div>
+				<div>
+					<i class="fa fa-globe"></i>
+					<span><b>Discover new items</b> and live life</span>
+				</div>
+				<div>
+					<i class=" fa fa-check-square-o"></i>
+					<span><b>Start checking off</b> things you have always wanted to do</span>
+				</div>
+			</div>
+		</div>
+		<div class="large-5 columns">
+			<section id="bucket-list">
+	            <header id="header">
+	                <form id="bucket-list-form" autocomplete="off">
+	                    <input id="new-bucket-item" placeholder="What do I want to do?" autofocus>
+	                </form>
+	            </header>
+	            <section id="main">
+	                <ul id="todo-list">
+	                    <li>
+	                        <div class="view">
+	                            <input class="toggle" type="checkbox" disabled>
+	                            <label>Join interBucket</label>
+	                        </div>
+	                        <form>
+	                            <input class="edit" type="text" disabled>
+	                        </form>
+	                    </li>
+	                    <li>
+	                        <div class="view">
+	                            <input class="toggle" type="checkbox" disabled>
+	                            <label>Make your own bucket list</label>
+	                        </div>
+	                        <form>
+	                            <input class="edit" type="text">
+	                        </form>
+	                    </li>
+	                    <li>
+	                        <div class="view">
+	                            <input class="toggle" type="checkbox" disabled>
+	                            <label>Share it with friends</label>
+	                        </div>
+	                        <form>
+	                            <input class="edit" type="text">
+	                        </form>
+	                    </li>
+	                    <li>
+	                        <div class="view">
+	                            <input class="toggle" type="checkbox" disabled>
+	                            <label>Find friends with common items</label>
+	                        </div>
+	                        <form>
+	                            <input class="edit" type="text">
+	                        </form>
+	                    </li>
+	                    <li>
+	                        <div class="view">
+	                            <input class="toggle" type="checkbox" disabled>
+	                            <label>Start completing your bucket list</label>
+	                        </div>
+	                        <form>
+	                            <input class="edit" type="text">
+	                        </form>
+	                    </li>
+	                    <li  class="completed">
+	                        <div class="view">
+	                            <input class="toggle" type="checkbox" checked>
+	                            <label>Be Awesome</label>
+	                        </div>
+	                        <form>
+	                            <input class="edit" type="text">
+	                        </form>
+	                    </li>
+	                </ul>
+	            </section>
+	            <footer id="footer">
+	                <span id="count"><strong></strong></span>
+	                <ul id="filters">
+	                    <li class="filter all selected">All</li>
+	                    <li class="filter active">Active</li>
+	                    <li class="filter complete">Completed</li>
+	                </ul>
+	            </footer>
+	            <div id="join-message">To keep adding join now!</div>
+	    	</section>
+		</div>
+	</div>
+	<%= render :partial => "authentication_facebook" %>
+</div>
+
+
+
+
+

@@ -1,0 +1,16 @@
+<div id="user_nav">
+	<% if current_user %>
+	<strong><%= current_user.name %></strong>
+	<a href="<%= signout_path %>" id="sign_out">Sign out</a>
+	<% else %>
+	<div class="facebook-container">
+		<a href="/auth/facebook">
+			<div class="facebook-login" id="sign_in">
+				<div class="spinner"></div>
+				<div class="separator"></div>
+				<div class="text">Sign in</div>
+			</div>
+		</a>
+	</div>
+	<% end %>
+</div>

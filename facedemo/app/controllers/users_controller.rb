@@ -9,11 +9,15 @@ class UsersController < ApplicationController
   end
 
   def add_activity
-    @user = User.find(params["id"])
+    # @user = User.find(params["id"])
     activity = params["activity"]
     hashtags = activity.scan(/#\S+/) # grabs all hashtags 
     # add the hashtags
-    render json: { state: "success", user_id: @user.id, activity: activity }
+    render json: { state: "success", hashtag: hashtags, activity: activity }
+  end
+
+  def dashie
+    @id = params[:id]
   end
 
 end
