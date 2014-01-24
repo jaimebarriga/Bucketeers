@@ -1,8 +1,14 @@
 
 $(document).on('click', '#bucket_list #add_activity a', ( ->
-  new_activity = $('#new_activity').val()
-  return if new_activity == ""
   user_id = $('#user_id').text()
+  new_activity = $('#new_activity').val();
+  addActivity(user_id,new_activity);
+));
+
+
+addActivity = (user_id,new_activity) ->
+  return if user_id == ""
+  return if new_activity == ""
   $('#new_activity').val("")
   $('#bucket_list .activities').append('<li>'+new_activity+'</li>')
   console.log("/users/#{user_id}/add_activity")
@@ -12,7 +18,6 @@ $(document).on('click', '#bucket_list #add_activity a', ( ->
     data: { activity: new_activity }
     success: (data) ->
       console.log(data)
-));
 
 bucketList = $('#bucket-list')
 bucketList.on('click', '.toggle', ( ->
