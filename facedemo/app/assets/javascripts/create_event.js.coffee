@@ -4,7 +4,6 @@ poll1 = () ->
     type: "POST"
     data: { activity: "boo #boo" }
     success: (data) ->
-      console.log("poll1")
       poll1()
 
 
@@ -14,7 +13,6 @@ poll2 = () ->
     type: "POST"
     data: { activity: "boo #boo" }
     success: (data) ->
-      console.log("poll2")
       poll2()
 
 poll1()
