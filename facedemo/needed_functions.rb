@@ -83,8 +83,8 @@ class Activity < ActiveRecord::Base
 
   # Creates new activity and new tag also if necessary
   # e.g. If "#eat" never existed, create new tag with name "#eat"
-  def self.save_activity(tag)
-
+  def self.save_activity!(activity,user_id)
+    hashtags = activity.scan(/#\S+/) # grabs all hashtags
   end
 
 end

@@ -2,18 +2,24 @@
 
 = render "authentication_facebook"
 
-%p= "Hello"
 
-%p
+%h4
   = "Profile"
+%p
   = @user.profile
 
-%p
+%h4
   = "Friends"
+%p
   = @user.friends
 
-%p
+%h4
   = "Friends Who Installed App"
+%p
   = @user.friends_who_installed_app
 
+
+
 = render "bucket_list"
+= render "friend_activities"
+= render "templates/friend_activity"

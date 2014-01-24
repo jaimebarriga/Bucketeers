@@ -15,6 +15,7 @@ Facedemo::Application.routes.draw do
     member do
       get :dashboard
       post :add_activity
+      post :pre_event_tag_details
       get :dashie
     end
     
