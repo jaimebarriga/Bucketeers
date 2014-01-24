@@ -1,6 +1,4 @@
 
-console.log("users.js.coffee")
-
 $(document).on('click', '#bucket_list #add_activity a', ( ->
   new_activity = $('#new_activity').val()
   return if new_activity == ""
