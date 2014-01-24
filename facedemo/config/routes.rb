@@ -4,6 +4,8 @@ Facedemo::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
+  match "/" => redirect("/users/welcome")
+
   resources :users do
 
     collection do
