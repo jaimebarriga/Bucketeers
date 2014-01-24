@@ -1,0 +1,81 @@
+- content_for :title, "interBucket"
+
+
+#global-container
+  .content
+    .large-7.columns
+      %h1.logo interBucket
+      .title Your Online Bucketlist
+      .description
+        %div
+          %i.fa.fa-list-ol
+          %span
+            %b Create and manage
+            your personal bucket list
+        %div
+          %i.fa.fa-users
+          %span
+            %b View lists of your friends
+            and compare
+        %div
+          %i.fa.fa-globe
+          %span
+            %b Discover new items
+            and live life
+        %div
+          %i.fa.fa-check-square-o
+          %span
+            %b Start checking off
+            things you have always wanted to do
+    .large-5.columns
+      %section#bucket-list
+        %header#header
+          %form#bucket-list-form{:autocomplete => "off"}
+            %input#new-bucket-item{:autofocus => "", :placeholder => "What do I want to do?"}
+        %section#main
+          %ul#todo-list
+            %li
+              .view
+                %input.toggle{:disabled => "", :type => "checkbox"}
+                  %label Join interBucket
+              %form
+                %input.edit{:disabled => "", :type => "text"}
+            %li
+              .view
+                %input.toggle{:disabled => "", :type => "checkbox"}
+                  %label Make your own bucket list
+              %form
+                %input.edit{:type => "text"}
+            %li
+              .view
+                %input.toggle{:disabled => "", :type => "checkbox"}
+                  %label Share it with friends
+              %form
+                %input.edit{:type => "text"}
+            %li
+              .view
+                %input.toggle{:disabled => "", :type => "checkbox"}
+                  %label Find friends with common items
+              %form
+                %input.edit{:type => "text"}
+            %li
+              .view
+                %input.toggle{:disabled => "", :type => "checkbox"}
+                  %label Start completing your bucket list
+              %form
+                %input.edit{:type => "text"}
+            %li.completed
+              .view
+                %input.toggle{:checked => "", :type => "checkbox"}
+                  %label Be Awesome
+              %form
+                %input.edit{:type => "text"}
+        %footer#footer
+          %span#count
+            %strong
+          %ul#filters
+            %li.filter.all.selected All
+            %li.filter.active Active
+            %li.filter.complete Completed
+        #join-message To keep adding join now!
+  = render :partial => "authentication_facebook"

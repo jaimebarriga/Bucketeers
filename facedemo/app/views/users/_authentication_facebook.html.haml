@@ -1,0 +1,13 @@
+#user_nav
+  - if current_user
+    = current_user.name
+    %a#sign_out{:href => signout_path}
+      = "Sign out"
+    %p#user_id{:hidden => ""}= current_user.id
+  - else
+    .facebook-container
+      %a{:href => "/auth/facebook"}
+        #sign_in.facebook-login
+          .spinner
+          .separator
+          .text= "Sign in"
