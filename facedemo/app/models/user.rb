@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def super_token # from developers.facebook.com/tools/explorer
-  #   "CAACEdEose0cBAIAIhaMGCZC0B9yccbHE9JT4w8AZBZC7KFG4nlsRsBJdHdZBOTRP4pWpF45lENlo0kIfFZAhYpiNPQcdQ0brafNEZCZBortiqQCQOEZCUxxYtlZCRj09OLl5KX15hXNqZCqYchUh0fbauCkGKBOydVYibBrCSWHTkcaWpGQvwwdUE2XgprdJw1ItKAZBsA9bZCz8iAZDZD"
-  # end
-
   def graph_api
     Koala::Facebook::API.new(self.oauth_token)
   end
@@ -28,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    @friends = self.graph_api.get_connections("me", "friends")
+    self.graph_api.get_connections("me", "friends")
   end
 
   def mutual_friends
