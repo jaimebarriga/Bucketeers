@@ -96,7 +96,7 @@ $('#add-new-item').on('submit', ( ->
         html = '<li data-id="'+data.activity_id.toString()+'"><div class="view"><input class="toggle" type="checkbox">' +
          '<label>'+value+' <a class="hashtag">'+data.tag+'</a></label></div><form><input class="edit" type="text">'+
          '</form></li>'
-        $('#todo-list').append(html);
+        $('#todo-list').append(html)
       else if state =="failure"
         console.log(data)
         console.log("Oops, you already have that")
