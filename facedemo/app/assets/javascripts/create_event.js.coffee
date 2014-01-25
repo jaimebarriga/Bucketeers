@@ -46,12 +46,8 @@ $('#friend-activities').on('click', '#create_event_button', ( ->
 
 show_or_hide_create_event_button = () ->
   if get_current_friend_uids().length == 0
-    console.log('hide')
-    console.log(get_current_friend_uids())
     $('#create_event_button').hide()
   else
-    console.log('show')
-    console.log(get_current_friend_uids())
     $('#create_event_button').show()
 
 get_tag_id_selected = () ->
