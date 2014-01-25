@@ -710,6 +710,14 @@ $image-dimensions: 50px;
    			background-color: rgba(0,0,0,0.7);
    			cursor: pointer;
 
+   			a {
+   				position: absolute;
+   				top:0;
+   				bottom: 0;
+   				left: 0;
+   				right: 0;
+   			}
+
    			i {
    				color: white;
    				height: 30px;

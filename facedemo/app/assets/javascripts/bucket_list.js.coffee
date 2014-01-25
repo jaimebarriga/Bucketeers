@@ -111,11 +111,9 @@ $('#add-new-item').on('submit', ( ->
         html += "</form></li>"
         $('#todo-list').append(html);
       else if state =="failure"
-        console.log(data)
         console.log("Oops, you already have that")
         input.val("");
     error: (xhr, error) ->
-      alert(error)
 
   return false
 ));
@@ -123,7 +121,7 @@ $('#add-new-item').on('submit', ( ->
 $('.your-bucket-list').on('click', '.toggle', ( ->
   li_item = $(this).parent().parent()
   completed = !li_item.hasClass('completed')
-  alert("new state: "+completed)
+  a_id = li_item.data('id')
   dataSend = 
     'activity_id': li_item.data('id')
     'state': completed
