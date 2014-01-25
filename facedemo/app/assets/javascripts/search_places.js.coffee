@@ -15,7 +15,14 @@ search_places = (activity_name) ->
       string = generateString(data)
       $('.suggestions').html(string);
 
+put_link_to_hashtag = (str) ->
+  return str.replace(/#\S+/, "<a class='hashtag'>$&</a>")
+
 $('#todo-list').on('click','li', ( ->
+  tag_id = $(this).attr('data-tag-id')
+  tag_name = $(this).find(".hashtag").text()
+  $('#tag-selected').html(put_link_to_hashtag(tag_name))
+  $('#tag-selected').attr("data-tag-id",tag_id)
   place_name = $(this).find(".hashtag").text().slice(1)
   search_places(place_name)
-));
+))

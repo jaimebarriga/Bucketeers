@@ -1,50 +1,58 @@
-POLL_DELAY = 5000
+POLL_DELAY = 500
 USER_ID = $('#user_id').text()
 
 poll1 = () ->
   current_friend_ids = get_current_friend_ids()
-  tag_id = 1 # Erik
+  tag_id = get_tag_id_selected()
   data_to_send = { tag_id: tag_id, current_friend_ids: current_friend_ids }
   $.ajax
     url: "/users/#{USER_ID}/pre_event_tag_details"
     type: "POST"
     data: data_to_send
     success: (data) ->
-      # console.log("poll1")
+      console.log('poll')
       jQuery.each data, (i, instruction) ->
         console.log(instruction[0])
         if instruction[0] == "add"
-          # console.log("adding")
-          # console.log(instruction[1])
-          # console.log(instruction[2])
           add_friend_activity(instruction[1],instruction[2])
         if instruction[0] == "delete"
           delete_friend_activity(instruction[1])
-      # fix_friend_activity_list(data)
-      # add_friend_activity(1,data[0])
-      # add_friend_activity(2,data[1])
-      # add_friend_activity(-1,data[2])
-      # delete_friend_activity(5)
-      # setTimeout (-> poll1(USER_ID) ), POLL_DELAY
+      setTimeout (-> poll1() ), POLL_DELAY
+
     error: (data) ->
       console.log("error!")
+      setTimeout (-> poll1() ), POLL_DELAY
+
+setTimeout (-> poll1(USER_ID) ), 0
 
 
-# poll2 = () ->
-#   $.ajax
-#     url: "/users/#{USER_ID}/add_activity"
-#     type: "POST"
-#     data: { activity: "boo #boo" }
-#     success: (data) ->
-#       # console.log("poll2")
-#       setTimeout (-> poll2() ), POLL_DELAY
-
-
-# setTimeout (-> poll1(USER_ID) ), 0
-# setTimeout (-> poll2(USER_ID) ), POLL_DELAY
-
+$('#friend-activities').on('click', '#create_event_button', ( ->
+  current_friend_uids = get_current_friend_uids()
+  name = "Pseudo Event" # HACK
+  date = "2014-02-17" # HACK
+  data_to_send = { name: name, date: date, current_friend_uids: current_friend_uids }
+  console.log(data_to_send)
+  $.ajax
+    url: "/users/#{USER_ID}/create_event"
+    type: "POST"
+    data: data_to_send
+    success: (data) ->
+      console.log(data)
+    error: (data) ->
+      console.log("error")
+));
 
 # Helper Functions
+
+get_tag_id_selected = () ->
+  $('#tag-selected').attr('data-tag-id')
+
+get_current_friend_uids = () ->
+  user_uid_objects = $('#friend-activities .selected .user-uid')
+  arr = jQuery.map(user_uid_objects, (user_id_object) ->
+    user_id_object.innerHTML
+  )
+  return arr
 
 get_current_friend_ids = () ->
   user_id_objects = $('#friend-activities .user-id')
@@ -54,14 +62,13 @@ get_current_friend_ids = () ->
   return arr
 
 add_friend_activity = (activity_number_below,activity) ->
-  console.log("adding once!!!")
   template = $('#friend-activity-template').clone()
   template.find('.user-id').text(activity.user_id)
   template.find('.user-uid').text(activity.user_uid)
   template.find('.user-name').text(activity.user_name)
   template.find('.user-profile-pic img').attr("src", activity.profile_pic)
-  template.find('.activity').text(activity.activity)
-  console.log(template.html())
+  template.find('.activity').text(activity.description)
+
   if activity_number_below == -1
     $('#friend-activities ul').append('<li>'+template.html()+'</li>')
   else
