@@ -64,7 +64,6 @@ class User < ActiveRecord::Base
       privacy_type: privacy_type,
       access_token: self.oauth_token}, "POST")
 
-    debugger
     invite_to_event(event["id"], invitees_uids)
     event
   end

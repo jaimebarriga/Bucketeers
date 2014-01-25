@@ -26,7 +26,7 @@ test:
   database: facedemo_test
   pool: 5
   username: root
-  password: mynewpassword
+  password: INDIAN37
   socket: /tmp/mysql.sock
 
 production:
@@ -35,5 +35,5 @@ production:
   database: facedemo_test
   pool: 5
   username: root
-  password: mynewpassword
+  password: INDIAN37
   socket: /tmp/mysql.sock
