@@ -18,7 +18,7 @@
 						- @activities.each do |activity|
 							%li{"data-id" => activity.id, "data-tag-id" => activity.tag_id}
 								.view
-									%input.toggle{:type => "checkbox"}
+									%input.toggle{:type => "checkbox", :checked => activity.state}
 										%label=activity.description_with_link.html_safe
 									%form
 										%input.edit{:type => "text"}
