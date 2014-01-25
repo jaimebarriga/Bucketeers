@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
       access_token: self.oauth_token}, "POST")
   end
 
-
-
+  def profile_pic
+    return "http://graph.facebook.com/#{self.uid}/picture"
+  end
 end
