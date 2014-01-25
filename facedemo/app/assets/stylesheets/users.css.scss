@@ -413,7 +413,7 @@ label[for='toggle-all'] {
 	margin: 0;
 	padding: 0;
 	height: 50px;
-	font-weight:bold;
+	font-weight: bold;
 	font-family: 'Proxima Nova';
 	background: rgb(32,56,92); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(32,56,92,1) 0%, rgba(38,59,89,1) 100%); /* FF3.6+ */
@@ -747,3 +747,42 @@ $image-dimensions: 50px;
 	}
 }
 
+#sign_out {
+	display: inline-block;
+	height: 50px;
+	float: right;
+	line-height: 50px;
+	color: white;
+	padding-right: 10px;
+}
+
+#myModal .text {
+	font-size: 16px;
+}
+
+#addEvent {
+	position:fixed;
+	top:80px;
+	right:220px;
+}
+
+.facebook-container.createEvent {
+	position: static;
+	margin: 0 auto;
+}
+
+.row.eventRow {
+	margin-bottom: 15px;
+	input {
+		height: 50px;
+	}
+	label {
+		height: 20px;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+}
+
+#create_event_button.facebook-login{
+	margin-top: 0;
+}

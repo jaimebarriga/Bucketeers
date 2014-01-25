@@ -15,6 +15,7 @@ poll1 = (prev_tag_id) ->
     type: "POST"
     data: data_to_send
     success: (data) ->
+
       console.log('poll')
       show_or_hide_create_event_button()
       if tag_id > 0
@@ -29,13 +30,14 @@ poll1 = (prev_tag_id) ->
       console.log("error!")
       setTimeout (-> poll1(get_tag_id_selected()) ), POLL_DELAY
 
+
 setTimeout (-> poll1(get_tag_id_selected()) ), 0
 
 
-$('#friend-activities').on('click', '#create_event_button', ( ->
+$(document).on('click', '#create_event_button', ( ->
   current_friend_uids = get_current_friend_uids()
-  name = "Pseudo Event" # HACK
-  date = "2014-02-17" # HACK
+  name = $('input[name="eventName"]').val() # HACK
+  date = $('input[name="eventDate"]').val() # HACK
   data_to_send = { name: name, date: date, current_friend_uids: current_friend_uids }
   console.log(data_to_send)
   $.ajax
@@ -44,6 +46,7 @@ $('#friend-activities').on('click', '#create_event_button', ( ->
     data: data_to_send
     success: (data) ->
       console.log(data)
+      $('#myModal').foundation('reveal', 'close');
     error: (data) ->
       console.log("error")
 ));
@@ -52,9 +55,9 @@ $('#friend-activities').on('click', '#create_event_button', ( ->
 
 show_or_hide_create_event_button = () ->
   if get_current_friend_uids().length == 0
-    $('#create_event_button').hide()
+    $('#addEvent').hide()
   else
-    $('#create_event_button').show()
+    $('#addEvent').show()
 
 get_tag_id_selected = () ->
   $('#tag-selected').attr('data-tag-id')
@@ -90,3 +93,7 @@ add_friend_activity = (activity_number_below,activity) ->
 delete_friend_activity = (user_id) ->
   friend_activity_to_delete = $("#friend-activities ul li .user-id:contains(#{user_id})").closest('li')
   friend_activity_to_delete.slideUp(500, -> $(this).remove())
+
+$('button').on('click', ( =>
+  $('#myModal').foundation('reveal', 'open');
+))
