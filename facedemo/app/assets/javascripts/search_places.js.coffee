@@ -10,7 +10,6 @@ generateString = (array) ->
   return string
 
 search_places = (activity_name) ->
-  console.log('starting')
   $.ajax
     url: "/users/search_places?name=#{activity_name}&country=Canada"
     type: "GET"
