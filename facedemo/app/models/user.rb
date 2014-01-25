@@ -43,6 +43,12 @@ class User < ActiveRecord::Base
     friends.map{|friend| friend["id"]}
   end
 
+  def get_places (name, country)
+    places =  graph_api.graph_call("/search?q=s#{name}&type=place")
+    places.reject {|place| place["location"]["country"] != country}
+    return places
+  end
+
   def my(request)
     self.graph_api.get_connections("me",request)
   end
@@ -69,6 +75,7 @@ class User < ActiveRecord::Base
       access_token: self.oauth_token}, "POST")
   end
 
-
-
+  def profile_pic
+    return "http://graph.facebook.com/#{self.uid}/picture"
+  end
 end

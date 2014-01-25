@@ -29,7 +29,6 @@ poll1 = () ->
     error: (data) ->
       console.log("error!")
 
-
 # poll2 = () ->
 #   $.ajax
 #     url: "/users/#{USER_ID}/add_activity"
