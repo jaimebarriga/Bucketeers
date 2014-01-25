@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def friends_who_installed_app
-    friends = self.graph_api.graph_call("/#{self.uid}/friends?fields=installed")
+    friends = self.graph_api.graph_call("/#{self.uid}/friends?fields=name,installed")
     friends.map{|friend| friend["id"]}
   end
 
