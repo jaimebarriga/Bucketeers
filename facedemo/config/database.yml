@@ -14,7 +14,7 @@ development:
   database: facedemo_development
   pool: 5
   username: root
-  password: mynewpassword
+  password:
   socket:
 
 #/tmp/mysql.sock

@@ -79,11 +79,15 @@ $('.complete').on('click', ( ->
 $('#add-new-item').on('submit', ( ->
   input = $(this).find('input');
   value = input.val();
-  input.val("");
-  html = '<li><div class="view"><input class="toggle" type="checkbox">' +
-         '<label>'+value+'</label></div><form><input class="edit" type="text">'+
-         '</form></li>'
-  $('#todo-list').append(html);
+
+  dataSend = 
+    'activity': value
+  $.ajax
+    url: "/users/"+$('#user_id').text()+"/add_activity"
+    data: dataSend
+    type: "POST"
+    success: (data) ->
+      console.log(JSON.stringify(data))
 
   return false
 ));

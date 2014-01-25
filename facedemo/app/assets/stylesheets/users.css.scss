@@ -568,6 +568,12 @@ $image-dimensions: 50px;
 			background-color: #aaa;
 			top: -8px;
 			left: -8px;
+			-webkit-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -ms-transition: all 1s linear;
+    -kthtml-transition: all 1s linear;
+    transition: all 1s linear;
 		}
 
 		img {
