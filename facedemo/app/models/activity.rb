@@ -28,7 +28,6 @@ class Activity < ActiveRecord::Base
   	return Activity.where(:user_id => user_id, :tag_id => tag_id).first.state
   end
 
-
   def self.toggle_state(activity_id, user_id, state)
     #a = Activity.where(:user_id => user_id, :id => activity_id).first
     a = Activity.find(activity_id)
