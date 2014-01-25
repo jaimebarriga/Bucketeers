@@ -74,3 +74,31 @@ $('.complete').on('click', ( ->
   list.removeClass().addClass('show-completed')
   return
 ));
+
+
+$('#add-new-item').on('submit', ( ->
+  input = $(this).find('input');
+  value = input.val();
+  input.val("");
+  html = '<li><div class="view"><input class="toggle" type="checkbox">' +
+         '<label>'+value+'</label></div><form><input class="edit" type="text">'+
+         '</form></li>'
+  $('#todo-list').append(html);
+
+  return false
+));
+
+$('.your-bucket-list').on('click', '.toggle', ( ->
+  $this = $(this)
+  checked = $this.prop('checked')
+  $this.parent().parent().toggleClass('completed')
+  if checked
+    $this.prop('checked', true)
+  else
+    $this.prop('checked', false)
+));
+
+$('.user-profile-pic').on('click', ( -> 
+  $(this).parent().toggleClass('selected')
+));
+

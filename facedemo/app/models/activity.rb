@@ -33,6 +33,7 @@ class Activity < ActiveRecord::Base
     a = Activity.find(activity_id)
     if a.blank?
     	return "failure"
+    end
     a.state = state
     a.save
     return "success"
@@ -60,5 +61,4 @@ class Activity < ActiveRecord::Base
   	#Tag.change_score_up(t.id) # increment the tag score
   	return a
   end
-
 end

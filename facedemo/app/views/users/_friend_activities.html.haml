@@ -1,26 +1,38 @@
 #friend-activities
   %ul
     %li
-      .friend-activity
+      .friend-activity.selected
         .user-name= "Jaime Barriga"
         .user-id.hide= "43"
-        .activity= "Learn to ski."
-        %img.user-profile-pic{:src => 'http://graph.facebook.com/JaimeBarriga33/picture'}
+        .activity
+          Learn to ski.
+          %a.hashtag= "#skiing"
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/JaimeBarriga33/picture'}
     %li
       .friend-activity
         .user-name= "Pranay Kumar"
         .user-id.hide= "43"
-        .activity= "Go to France and ski"
-        %img.user-profile-pic{:src => 'http://graph.facebook.com/pranay.ujain/picture'}
+        .activity
+          Go to France and ski
+          %a.hashtag= "#skiing"
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/pranay.ujain/picture'}
     %li
       .friend-activity
         .user-name= "Rushab Kumar"
         .user-id.hide= "43"
-        .activity= "I want to go ski at the Alps"
-        %img.user-profile-pic{:src => 'http://graph.facebook.com/rushab.kumar.1/picture'}
+        .activity
+          I want to go ski at the Alps
+          %a.hashtag= "#skiing"
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/rushab.kumar.1/picture'}
     %li
       .friend-activity
         .user-name= "Jon Erik Suero"
         .user-id.hide= "43"
-        .activity= "I want to go skiing!"
-        %img.user-profile-pic{:src => 'http://graph.facebook.com/jonerik.suero/picture'}
+        .activity
+          I want to go skiing!
+          %a.hashtag= "#skiing"
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/jonerik.suero/picture'}

@@ -61,7 +61,8 @@ class Tag < ActiveRecord::Base
   		is_match_with_friends = user_friends.detect {|friend| friend["id"] == tag_matched_user.uid }
   		unless is_match_with_friends.blank?
   			# Adding all the friend users info and their activity info
-  			response << {user_id: tag_matched_user.id, user_name: tag_matched_user.name, description: activity.desc}
+  			response << {user_id: tag_matched_user.id, user_name: tag_matched_user.name, description: activity.desc, 
+                     profile_pic: tag_matched_user.profile_pic, user_uid: tag_matched_user.uid}
   		end
   	end
 
