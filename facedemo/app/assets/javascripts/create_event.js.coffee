@@ -18,7 +18,6 @@ poll1 = () ->
       # delete_friend_activity(5)
       # setTimeout (-> poll1(USER_ID) ), POLL_DELAY
 
-
 # poll2 = () ->
 #   $.ajax
 #     url: "/users/#{USER_ID}/add_activity"
@@ -30,8 +29,7 @@ poll1 = () ->
 
 
 # setTimeout (-> poll1(USER_ID) ), 0
-# setTimeout (-> poll2(USER_ID) ), POLL_DELAY
-
+# setTimeout (-> poll2(USER_ID) ), POLL_DELAY 
 
 # Helper Functions
 
