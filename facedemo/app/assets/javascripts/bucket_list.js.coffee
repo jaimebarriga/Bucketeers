@@ -95,7 +95,7 @@ $('#add-new-item').on('submit', ( ->
         tag = data.tag
         activity_label = put_link_to_hashtag(data.activity)
         input.val("");
-        html =  "<li data-id='"+data.activity_id.toString()+"'><div class='view'><input class='toggle' type='checkbox'>"
+        html =  "<li data-id='"+data.activity_id.toString()+"' data-tag-id='"+data.tag_id.toString()+"'><div class='view'><input class='toggle' type='checkbox'>"
         html += "<label>"
         html += activity_label
         html += "</label></div><form><input class='edit' type='text'>"

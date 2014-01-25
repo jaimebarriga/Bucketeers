@@ -1,4 +1,4 @@
-POLL_DELAY = 750
+POLL_DELAY = 500
 USER_ID = $('#user_id').text()
 
 poll1 = () ->
