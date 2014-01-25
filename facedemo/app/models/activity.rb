@@ -32,6 +32,7 @@ class Activity < ActiveRecord::Base
     a = Activity.where(:user_id => user_id, :desc => description).first
     if a.blank?
     	return "failure"
+    end
     a.state = state
     a.save
     return "success"
