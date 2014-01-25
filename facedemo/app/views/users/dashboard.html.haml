@@ -6,7 +6,7 @@
 			%span=current_user.name
 		%a#sign_out{:href => signout_path}
 			= "Sign out"
-		%p#user_id{:hidden => ""}= current_user.id
+		%p#user_id.hide{:hidden => ""}= current_user.id
 	%div.page-wrap
 		%section.your-bucket-list
 			%div.list
@@ -29,4 +29,3 @@
 			= render "templates/friend_activity"
 		%div.vertical-line
 		%section.suggestions
-			Hi

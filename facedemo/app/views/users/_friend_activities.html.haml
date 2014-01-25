@@ -1,9 +1,43 @@
 #friend-activities
   %ul
+    %li
+      .friend-activity.intro
+        .user-name= "Rushab Kumar"
+        .user-id.hide= "-4"
+        .activity
+          Start filling your Bucket List!
+          
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/rushab.kumar.1/picture'}
+    %li
+      .friend-activity.intro
+        .user-name= "Jaime Barriga"
+        .user-id.hide= "-3"
+        .activity
+          Do not forget the Hashtag! (conquer the #world)
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/JaimeBarriga33/picture'}
+    %li
+      .friend-activity.intro
+        .user-name= "Jon Erik Suero"
+        .user-id.hide= "-2"
+        .activity
+          Pick the friends that you want to invite!
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/jonerik.suero/picture'}
+    %li
+      .friend-activity.intro
+        .user-name= "Pranay Kumar"
+        .user-id.hide= "-1"
+        .activity
+          Create a Facebook Event!
+        %span.user-profile-pic
+          %img{:src => 'http://graph.facebook.com/pranay.ujain/picture'}
+
 
   .facebook-container
     %a{:href => "#"}
-      #create_event_button.facebook-login
+      #create_event_button.facebook-login.hide
         .spinner
         .separator
         .text= "Add Event"
