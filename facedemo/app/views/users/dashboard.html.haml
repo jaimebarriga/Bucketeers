@@ -16,15 +16,15 @@
 				%section.items
 					%ul#todo-list
 						- @activities.each do |activity|
-							%li
+							%li{"data-id" => activity.id, "data-tag-id" => activity.tag_id}
 								.view
 									%input.toggle{:type => "checkbox"}
-										%label=activity.desc
+										%label=activity.description_with_link.html_safe
 									%form
 										%input.edit{:type => "text"}
 		%section.dashboard
-			%header#tag-selected{:data => {'tag-id' => 1}}
-				%a.hashtag= "#skiing"
+			%header#tag-selected{:data => {'tag-id' => -1}}
+				%a.hashtag= "interBucket"
 			= render "friend_activities"
 			= render "templates/friend_activity"
 		%div.vertical-line
