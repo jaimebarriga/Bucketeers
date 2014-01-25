@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = User.find(params[:id])
+    @activities = Activity.get_all(@user.id)
   end
 
   def add_activity
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
 
   def all_activities
     user_id = params[:id]
-    activities = Activity.get_all(user_id)
+    @activities = Activity.get_all(user_id)
     render json: { state: "success", activities: activities.to_json}
   end
 
