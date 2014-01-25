@@ -13,7 +13,17 @@ class UsersController < ApplicationController
     user_id = params[:id]
     activity = params[:activity]
 
-    # Activity.save_activity!(activity,user_id) # creates a new Tag if needed
+    #state = Activity.save_activity!(activity,user_id) # creates a new Tag if needed
+
+    render json: { state: "success", activity: activity }
+  end
+
+  def toggle_activity
+    user_id = params[:id]
+    activity = params[:activity]
+    state = params[:state]
+
+    #Activity.toggle_state(activity,user_id,state)
 
     render json: { state: "success", activity: activity }
   end
