@@ -44,8 +44,9 @@ class User < ActiveRecord::Base
   end
 
   def get_places (name, country)
-    places =  graph_api.graph_call("/search?q=#{name}&type=place")
-    return places.reject {|place| place["location"]["country"] != country}
+    places =  graph_api.graph_call("/search?q=skiing&type=place&center=43.4,-80.54&distance=50000&limit=20")
+    #return places.reject {|place| place["location"]["country"] != country}
+    return places
   end
 
   def my(request)
@@ -56,21 +57,21 @@ class User < ActiveRecord::Base
     self.graph_api.graph_call(command)
   end
 
-  def create_event(name, date, invitees, privacy_type = "CLOSED")
+  def create_event(name, date, invitees_uids, privacy_type = "CLOSED")
     event = self.graph_api.graph_call("/me/events",{
       name: name, 
       start_time: date, # sample date: "2014-02-17"
       privacy_type: privacy_type,
       access_token: self.oauth_token}, "POST")
 
-    invite_to_event(event["id"], invitees)
+    invite_to_event(event["id"], invitees_uids)
 
     event
   end
 
-  def invite_to_event(event_id, invitees)
+  def invite_to_event(event_id, invitees_uids)
     self.graph_api.graph_call("/#{event_id}/invited",{
-      users: invitees.map{|invitee| invitee.uid},
+      users: invitees_uids,
       access_token: self.oauth_token}, "POST")
   end
 

@@ -6,7 +6,15 @@ search_places = (activity_name) ->
       console.log(data)
       $('.suggestions').text(JSON.stringify(data))
 
-$('#todo-list li').on('click', ( ->
-  $place_name = $(this).find(".hashtag").text().slice(1)
+# duplicate
+put_link_to_hashtag = (str) ->
+  return str.replace(/#\S+/, "<a class='hashtag'>$&</a>")
+
+$(document).on('click', '#todo-list li', ( ->
+  tag_id = $(this).attr('data-tag-id')
+  tag_name = $(this).find(".hashtag").text()
+  $('#tag-selected').html(put_link_to_hashtag(tag_name))
+  $('#tag-selected').attr("data-tag-id",tag_id)
+  $place_name = tag_name.slice(1)
   search_places("skiing")
 ));

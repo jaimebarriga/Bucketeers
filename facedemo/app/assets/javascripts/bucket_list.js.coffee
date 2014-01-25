@@ -75,6 +75,8 @@ $('.complete').on('click', ( ->
   return
 ));
 
+put_link_to_hashtag = (str) ->
+  return str.replace(/#\S+/, "<a class='hashtag'>$&</a>")
 
 $('#add-new-item').on('submit', ( ->
   input = $(this).find('input');
@@ -91,10 +93,13 @@ $('#add-new-item').on('submit', ( ->
       if state=="success"
         value = data.activity
         tag = data.tag
+        activity_label = put_link_to_hashtag(data.activity)
         input.val("");
-        html = '<li data-id="'+data.activity_id.toString()+'"><div class="view"><input class="toggle" type="checkbox">' +
-         '<label>'+value+' <a class="hashtag">'+data.tag+'</a></label></div><form><input class="edit" type="text">'+
-         '</form></li>'
+        html =  "<li data-id='"+data.activity_id.toString()+"' data-tag-id='"+data.tag_id.toString()+"'><div class='view'><input class='toggle' type='checkbox'>"
+        html += "<label>"
+        html += activity_label
+        html += "</label></div><form><input class='edit' type='text'>"
+        html += "</form></li>"
         $('#todo-list').append(html);
       else if state =="failure"
         alert("Failure")
@@ -114,7 +119,7 @@ $('.your-bucket-list').on('click', '.toggle', ( ->
     $this.prop('checked', false)
 ));
 
-$('.user-profile-pic').on('click', ( -> 
+$('#friend-activities').on('click', '.user-profile-pic', ( ->
   $(this).parent().toggleClass('selected')
 ));
 
