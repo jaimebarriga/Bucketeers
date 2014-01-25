@@ -14,5 +14,8 @@
 /log/*.log
 /tmp
 
+#For Mac
+.DS_Store
+
 #ignore database.yml
 /config/database.yml
