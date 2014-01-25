@@ -14,8 +14,9 @@ development:
   database: facedemo_development
   pool: 5
   username: root
-  password:
+  password: INDIAN37
   socket:
+
 #/tmp/mysql.sock
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,7 +27,7 @@ test:
   database: facedemo_test
   pool: 5
   username: root
-  password:
+  password: mynewpassword
   socket: /tmp/mysql.sock
 
 production:
@@ -35,5 +36,5 @@ production:
   database: facedemo_test
   pool: 5
   username: root
-  password:
+  password: mynewpassword
   socket: /tmp/mysql.sock
