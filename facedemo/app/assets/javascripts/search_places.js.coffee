@@ -1,13 +1,21 @@
+generateString = (array) ->
+  string = "<ul>"
+  $.each array, (i, object) ->
+    string += "<li class='suggest'>" + "<div class='name'>" + " " + object.name + "</div><div class='location'>" + object.location.city + ", " + object.location.country + "</div></li>"
+  string += "</ul>"
+  return string
+
 search_places = (activity_name) ->
+  console.log('starting')
   $.ajax
     url: "/users/search_places?name=#{activity_name}&country=Canada"
     type: "GET"
     success: (data) ->
-    	console.log(data)
-    	$('.suggestions').text(JSON.stringify(data))
+      console.log(data)
+      string = generateString(data)
+      $('.suggestions').html(string);
 
-$('#todo-list li').on('click', ( ->
-  $place_name = $(this).find(".hashtag").text().slice(1)
-  search_places("skiing")
+$('#todo-list').on('click','li', ( ->
+  place_name = $(this).find(".hashtag").text().slice(1)
+  search_places(place_name)
 ));
->>>>>>> 579e580a76bae33f0f1a583c4381d37d98fa8040
