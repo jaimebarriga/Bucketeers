@@ -51,7 +51,7 @@ add_friend_activity = (activity_number_below,activity) ->
   if activity_number_below == -1
     $('#friend_activities ul').append('<li>'+template.html()+'</li>')
   else
-    $('#friend_activities ul li:nth-child(' + activity_number_below + ')').before('<li>'+template.html()+'</li>')
+    $("#friend_activities ul li .user_id:contains(#{activity_number_below})").closest('li').before('<li>'+template.html()+'</li>')
 
 
 delete_friend_activity = (user_id) ->
