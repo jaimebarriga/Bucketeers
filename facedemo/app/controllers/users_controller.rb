@@ -13,19 +13,22 @@ class UsersController < ApplicationController
     user_id = params[:id]
     activity = params[:activity]
 
-    #state = Activity.save_activity!(activity,user_id) # creates a new Tag if needed
-
-    render json: { state: "success", activity: activity }
+    activity_obj = Activity.save_activity!(activity,user_id) # creates a new Tag if needed
+    if activity_obj.blank?
+      render json: { state: "failure", activity: activity}
+    end
+    tag_obj = Tag.find(activity_obj.tag_id)
+    render json: { state: "success", activity: activity, activity_id: activity_obj.id, tag: tag_obj.name }
   end
 
   def toggle_activity
     user_id = params[:id]
-    activity = params[:activity]
+    activity_id = params[:activity_id]
     state = params[:state]
 
-    #Activity.toggle_state(activity,user_id,state)
+    state = Activity.toggle_state(activity_id,user_id,state)
 
-    render json: { state: "success", activity: activity }
+    render json: { state: state, activity_id: activity_id }
   end
 
   def pre_event_tag_details
