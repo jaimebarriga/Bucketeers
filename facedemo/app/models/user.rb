@@ -57,7 +57,6 @@ class User < ActiveRecord::Base
   end
 
   def create_event(name, date, invitees_uids, privacy_type = "CLOSED")
-    debugger
     event = self.graph_api.graph_call("/me/events",{
       name: name, 
       start_time: date, # sample date: "2014-02-17"
