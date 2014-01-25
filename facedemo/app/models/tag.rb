@@ -15,7 +15,7 @@ class Tag < ActiveRecord::Base
   # This function is calld to increment score by activity if a activity is deleted.
   def self.change_score_down(tag_id)
   	tag = Tag.find_by_id(tag_id)
-  	if (tag.score = 0)
+  	if (tag.score == 0)
   		return tag.score
   	end
   	tag.score -= 1
