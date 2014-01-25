@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   def search_places
-    render json: User.get_places(params[:name], params[:country])
+    user = User.first
+    render json: user.get_places(params[:name], params[:country])
   end
 end

@@ -4,10 +4,9 @@ search_places = (activity_name) ->
     type: "GET"
     success: (data) ->
     	console.log(data)
+    	$('.suggestions').text(JSON.stringify(data))
 
-search_places("skiing")
-
-
-# $('#todo-list li').on('click' -> (
-#   $(this)
-# ));
+$('#todo-list li').on('click', ( ->
+  $place_name = $(this).find(".hashtag").text().slice(1)
+  search_places("skiing")
+));

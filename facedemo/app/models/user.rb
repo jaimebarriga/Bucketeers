@@ -44,9 +44,8 @@ class User < ActiveRecord::Base
   end
 
   def get_places (name, country)
-    places =  graph_api.graph_call("/search?q=s#{name}&type=place")
-    places.reject {|place| place["location"]["country"] != country}
-    return places
+    places =  graph_api.graph_call("/search?q=#{name}&type=place")
+    return places.reject {|place| place["location"]["country"] != country}
   end
 
   def my(request)
