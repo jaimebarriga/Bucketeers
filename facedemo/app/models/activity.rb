@@ -24,8 +24,12 @@ class Activity < ActiveRecord::Base
   end
 
   # Returns the state of the activity
-  def get_state(user_id, tag_id)
-  	return Activity.where(:user_id => user_id, :tag_id => tag_id).first.state
+  def get_state
+  	#state = Activity.where(:user_id => user_id, :tag_id => tag_id).first.state
+  	if self.state == "false"
+  	  return ""
+  	end
+  	return "completed"
   end
 
   def self.toggle_state(activity_id, user_id, state)
@@ -59,7 +63,7 @@ class Activity < ActiveRecord::Base
   	end
   	a = Activity.new
   	a.desc = description
-  	a.state = "Wish"
+  	a.state = "false"
   	a.tag_id = t.id
   	a.user_id = user_id
   	a.save

@@ -15,7 +15,7 @@
 				%section.items
 					%ul#todo-list
 						- @activities.each do |activity|
-							%li{"data-id" => activity.id, "data-tag-id" => activity.tag_id}
+							%li{"data-id" => activity.id, "data-tag-id" => activity.tag_id, "class" => activity.get_state}
 								.view
 									%input.toggle{:type => "checkbox", :checked => activity.state}
 										%label=activity.description_with_link.html_safe

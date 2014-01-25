@@ -33,13 +33,12 @@ class UsersController < ApplicationController
 
   def toggle_activity
     user_id = params[:id]
-
     activity_id = params[:activity_id]
     state = params[:state]
 
-    state = Activity.toggle_state(activity_id,user_id,state)
+    result = Activity.toggle_state(activity_id,user_id,state.to_s)
 
-    render json: { state: state, activity_id: activity_id }
+    render json: { state: result, activity_id: activity_id }
   end
 
   def pre_event_tag_details
