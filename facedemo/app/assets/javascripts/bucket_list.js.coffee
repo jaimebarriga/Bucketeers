@@ -21,14 +21,21 @@ addActivity = (user_id,new_activity) ->
 
 bucketList = $('#bucket-list')
 bucketList.on('click', '.toggle', ( ->
-  $this = $(this)
-  checked = $this.prop('checked')
-  $this.parent().parent().toggleClass('completed')
-  if checked
-    $this.prop('checked', true)
-  else
-    $this.prop('checked', false)
-));
+  li_item = $(this).parent().parent()
+  completed = !li_item.hasClass('completed')
+  alert("new state: "+completed)
+  dataSend = 
+    "activity_id": li_item.data('id')
+    "state": completed
+  $.ajax ->
+    url: "/users/"+$('#user_id').text()+"/toggle_activity"
+    data: dataSend
+    type: "POST"
+    success: (data) ->
+      state = data.state
+      if state == "success"
+        li_item.toggleClass('completed')
+))
 
 showJoinMessage = () ->
   message = $('#join-message')
@@ -81,6 +88,7 @@ put_link_to_hashtag = (str) ->
 $('#add-new-item').on('submit', ( ->
   input = $(this).find('input');
   value = input.val();
+  console.log("starting")
 
   dataSend = 
     'activity': value
@@ -91,6 +99,7 @@ $('#add-new-item').on('submit', ( ->
     success: (data) ->
       state = data.state
       if state=="success"
+        console.log(data)
         value = data.activity
         tag = data.tag
         activity_label = put_link_to_hashtag(data.activity)
@@ -102,7 +111,9 @@ $('#add-new-item').on('submit', ( ->
         html += "</form></li>"
         $('#todo-list').append(html);
       else if state =="failure"
-        alert("Failure")
+        console.log(data)
+        console.log("Oops, you already have that")
+        input.val("");
     error: (xhr, error) ->
       alert(error)
 
@@ -110,16 +121,24 @@ $('#add-new-item').on('submit', ( ->
 ));
 
 $('.your-bucket-list').on('click', '.toggle', ( ->
-  $this = $(this)
-  checked = $this.prop('checked')
-  $this.parent().parent().toggleClass('completed')
-  if checked
-    $this.prop('checked', true)
-  else
-    $this.prop('checked', false)
+  li_item = $(this).parent().parent()
+  completed = !li_item.hasClass('completed')
+  alert("new state: "+completed)
+  dataSend = 
+    "activity_id": li_item.data('id')
+    "state": completed
+  console.log(dataSend)
+  console.log("/users/"+$('#user_id').text()+"/toggle_activity")
+  $.ajax ->
+    url: "/users/"+$('#user_id').text()+"/toggle_activity"
+    data: dataSend
+    type: "POST"
+    success: (data) ->
+      state = data.state
+      if state == "success"
+        li_item.toggleClass('completed')
 ));
 
 $('#friend-activities').on('click', '.user-profile-pic', ( ->
   $(this).parent().toggleClass('selected')
 ));
-
