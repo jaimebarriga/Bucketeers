@@ -7,7 +7,11 @@ class Tag < ActiveRecord::Base
   # This function is calld to increment score by activity if a activity is created.
   def self.change_score_up(tag_id)
   	tag = Tag.find_by_id(tag_id)
-  	tag.score += 1
+  	if tag.score.blank?
+  		tag.score = 0
+  	else
+  		tag += 1
+  	end
   	tag.save
   	return tag.score
   end
@@ -45,25 +49,20 @@ class Tag < ActiveRecord::Base
   #     activity: "description3 #mountainclimbing boo"
   #   }
   # ]
-  def self.get_all_activities(tag_id, user_id)
+  def self.get_all_activities_with_tag(tag_id, user_id)
   	activities = Activity.find(:all, :conditions => {:tag_id => tag_id}).sort_by { |activity| activity[:user_id] }
   	user = User.find_by_id(user_id)
   	user_friends = user.friends
   	response = []
 
   	activities.each do |activity|
-  		
-  		if activity.user_id == user.id
-  			# Adding current users info and his activity info
-  			response << {user_id: user.uid, user_name: user.name, description: activity.desc}
-  		end
-
   		puts activity.desc
   		tag_matched_user = activity.user
   		is_match_with_friends = user_friends.detect {|friend| friend["id"] == tag_matched_user.uid }
   		unless is_match_with_friends.blank?
   			# Adding all the friend users info and their activity info
-  			response << {user_id: tag_matched_user.uid, user_name: tag_matched_user.name, description: activity.desc}
+  			response << {user_id: tag_matched_user.id, user_name: tag_matched_user.name, description: activity.desc, 
+                     profile_pic: tag_matched_user.profile_pic, user_uid: tag_matched_user.uid}
   		end
   	end
 

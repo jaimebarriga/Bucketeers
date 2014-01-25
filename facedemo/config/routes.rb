@@ -10,6 +10,7 @@ Facedemo::Application.routes.draw do
 
     collection do
       get :welcome
+      get :search_places
     end
 
     member do
