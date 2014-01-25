@@ -125,11 +125,9 @@ $('.your-bucket-list').on('click', '.toggle', ( ->
   completed = !li_item.hasClass('completed')
   alert("new state: "+completed)
   dataSend = 
-    "activity_id": li_item.data('id')
-    "state": completed
-  console.log(dataSend)
-  console.log("/users/"+$('#user_id').text()+"/toggle_activity")
-  $.ajax ->
+    'activity_id': li_item.data('id')
+    'state': completed
+  $.ajax
     url: "/users/"+$('#user_id').text()+"/toggle_activity"
     data: dataSend
     type: "POST"
@@ -137,6 +135,10 @@ $('.your-bucket-list').on('click', '.toggle', ( ->
       state = data.state
       if state == "success"
         li_item.toggleClass('completed')
+      else if state =="failure"
+        console.log("Failure! something went wrong")
+
+  return false
 ));
 
 $('#friend-activities').on('click', '.user-profile-pic', ( ->
