@@ -11,12 +11,13 @@ poll1 = () ->
     data: data_to_send
     success: (data) ->
       # console.log('poll')
-      jQuery.each data, (i, instruction) ->
-        if instruction[0] == "add"
-          add_friend_activity(instruction[1],instruction[2])
-        if instruction[0] == "delete"
-          delete_friend_activity(instruction[1])
       show_or_hide_create_event_button()
+      if tag_id > 0
+        jQuery.each data, (i, instruction) ->
+          if instruction[0] == "add"
+            add_friend_activity(instruction[1],instruction[2])
+          if instruction[0] == "delete"
+            delete_friend_activity(instruction[1])
       setTimeout (-> poll1() ), POLL_DELAY
 
     error: (data) ->
