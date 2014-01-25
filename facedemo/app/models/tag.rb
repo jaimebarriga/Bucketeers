@@ -70,7 +70,7 @@ class Tag < ActiveRecord::Base
   	return response
   end
 
-  def add_tag(tag_name)
-  	return Tag.find_or_create_by(name: tag_name)
-  end
+  def self.find_or_create_tag(tag_name)
+  	return Tag.find_by_name(tag_name) || Tag.create(:name => tag_name)
+   end
 end
