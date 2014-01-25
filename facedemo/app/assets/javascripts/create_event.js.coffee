@@ -2,18 +2,20 @@ POLL_DELAY = 5000
 USER_ID = $('#user_id').text()
 
 poll1 = () ->
+  current_friend_ids = get_current_friend_ids()
+  console.log(current_friend_ids)
   $.ajax
     url: "/users/#{USER_ID}/pre_event_tag_details"
     type: "POST"
-    data: { tag_id: 45 }
+    data: { tag_id: 45, current_friend_ids: current_friend_ids }
     success: (data) ->
       # console.log("poll1")
-      # console.log(data)
+      console.log(data)
       # fix_friend_activity_list(data)
-      add_friend_activity(1,data[0])
-      add_friend_activity(2,data[1])
-      add_friend_activity(-1,data[2])
-      delete_friend_activity(5)
+      # add_friend_activity(1,data[0])
+      # add_friend_activity(2,data[1])
+      # add_friend_activity(-1,data[2])
+      # delete_friend_activity(5)
       # setTimeout (-> poll1(USER_ID) ), POLL_DELAY
 
 
@@ -33,6 +35,12 @@ setTimeout (-> poll2(USER_ID) ), POLL_DELAY
 
 # Helper Functions
 
+get_current_friend_ids = () ->
+  user_id_objects = $('#friend_activities .user_id')
+  arr = jQuery.map(user_id_objects, (user_id_object) ->
+    user_id_object.innerHTML
+  )
+  return arr
 
 add_friend_activity = (activity_number_below,activity) ->
   template = $('#friend_activity_template').clone()
