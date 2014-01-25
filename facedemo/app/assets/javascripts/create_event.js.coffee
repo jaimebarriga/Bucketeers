@@ -14,34 +14,16 @@ poll1 = () ->
       jQuery.each data, (i, instruction) ->
         console.log(instruction[0])
         if instruction[0] == "add"
-          # console.log("adding")
-          # console.log(instruction[1])
-          # console.log(instruction[2])
           add_friend_activity(instruction[1],instruction[2])
         if instruction[0] == "delete"
           delete_friend_activity(instruction[1])
-      # fix_friend_activity_list(data)
-      # add_friend_activity(1,data[0])
-      # add_friend_activity(2,data[1])
-      # add_friend_activity(-1,data[2])
-      # delete_friend_activity(5)
-      # setTimeout (-> poll1(USER_ID) ), POLL_DELAY
+
     error: (data) ->
       console.log("error!")
 
-
-# poll2 = () ->
-#   $.ajax
-#     url: "/users/#{USER_ID}/add_activity"
-#     type: "POST"
-#     data: { activity: "boo #boo" }
-#     success: (data) ->
-#       # console.log("poll2")
-#       setTimeout (-> poll2() ), POLL_DELAY
-
-
 setTimeout (-> poll1(USER_ID) ), 0
-# setTimeout (-> poll2(USER_ID) ), POLL_DELAY
+
+
 
 
 # Helper Functions
