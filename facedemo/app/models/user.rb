@@ -2,8 +2,9 @@ require 'net/http'
 require 'net/https'
 
 class User < ActiveRecord::Base
+  has_many :activities
+  has_many :tags, through: :activities
   attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, :uid
-
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
