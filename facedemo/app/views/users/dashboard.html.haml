@@ -6,6 +6,7 @@
 			%span=current_user.name
 		%a#sign_out{:href => signout_path}
 			= "Sign out"
+		%p#user_id{:hidden => ""}= current_user.id
 	%div.page-wrap
 		%section.your-bucket-list
 			%div.list
@@ -111,6 +112,5 @@
 							%form
 								%input.edit{:type => "text"}
 		%section.dashboard
-			= render "bucket_list"
 			= render "friend_activities"
 			= render "templates/friend_activity"

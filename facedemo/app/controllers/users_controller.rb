@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def pre_event_tag_details
     user_id = params[:id]
     tag_id = params[:tag_id]
+    current_friend_ids = params[:current_friend_ids].map{|friend_id| friend_id.to_i}
     arr = [
       {
         user_id: 3, # id of the User in our database
