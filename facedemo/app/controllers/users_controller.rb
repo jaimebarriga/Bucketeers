@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     user_id = params[:id]
     tag_id = params[:tag_id]
     old_arr = (params[:current_friend_ids] || []).map{|friend_id| friend_id.to_i}
-    complete_new_arr = Tag.get_all_activities(tag_id,user_id)
+    complete_new_arr = Tag.get_all_activities_with_tag(tag_id,user_id)
     instructions  = ListCommander.give_instructions(old_arr, complete_new_arr)
     render json: instructions
   end

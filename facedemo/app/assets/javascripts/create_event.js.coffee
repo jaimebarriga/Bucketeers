@@ -14,9 +14,9 @@ poll1 = () ->
       jQuery.each data, (i, instruction) ->
         console.log(instruction[0])
         if instruction[0] == "add"
-          console.log("adding")
-          console.log(instruction[1])
-          console.log(instruction[2])
+          # console.log("adding")
+          # console.log(instruction[1])
+          # console.log(instruction[2])
           add_friend_activity(instruction[1],instruction[2])
         if instruction[0] == "delete"
           delete_friend_activity(instruction[1])
@@ -53,10 +53,12 @@ get_current_friend_ids = () ->
   return arr
 
 add_friend_activity = (activity_number_below,activity) ->
+  console.log("adding once!!!")
   template = $('#friend-activity-template').clone()
   template.find('.user-id').text(activity.user_id)
+  template.find('.user-uid').text(activity.user_uid)
   template.find('.user-name').text(activity.user_name)
-  template.find('.user-profile-pic').text(activity.user_profile_pic)
+  template.find('.user-profile-pic img').attr("src", activity.profile_pic)
   template.find('.activity').text(activity.activity)
   console.log(template.html())
   if activity_number_below == -1

@@ -7,6 +7,6 @@ search_places = (activity_name) ->
 
 search_places("skiing")
 
-$('#todo-list li').on('click' -> (
-  $(this)
-));
+# $('#todo-list li').on('click' -> (
+#   $(this)
+# ));
