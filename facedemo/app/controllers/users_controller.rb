@@ -18,7 +18,15 @@ class UsersController < ApplicationController
       render json: { state: "failure", activity: activity}
     end
     tag_obj = Tag.find(activity_obj.tag_id)
+    activity = activity.downcase
+    activity.slice! (tag_obj.name)
     render json: { state: "success", activity: activity, activity_id: activity_obj.id, tag: tag_obj.name }
+  end
+
+  def all_activities
+    user_id = params[:id]
+    activities = Activity.get_all(user_id)
+    render json: { state: "success", activities: activities.to_json}
   end
 
   def toggle_activity
