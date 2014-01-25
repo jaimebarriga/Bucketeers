@@ -28,6 +28,7 @@ class Activity < ActiveRecord::Base
   	return Activity.where(:user_id => user_id, :tag_id => tag_id).first.state
   end
 
+
   def self.toggle_state(activity_id, user_id, state)
     #a = Activity.where(:user_id => user_id, :id => activity_id).first
     a = Activity.find(activity_id)
@@ -45,6 +46,7 @@ class Activity < ActiveRecord::Base
     hashtags = description.scan(/#\S+/) # grabs all hashtags
     if hashtags.size != 1
       return nil
+
     end
     t = Tag.find_or_create_tag(hashtags.first.to_s.downcase)
     # Create new activity or modify existing one

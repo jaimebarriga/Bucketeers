@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     user_id = params[:id]
     activity = params[:activity]
 
+
     activity_obj = Activity.save_activity!(activity,user_id) # creates a new Tag if needed
     if activity_obj.blank?
       render json: { state: "failure", activity: activity}
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
 
   def toggle_activity
     user_id = params[:id]
+
     activity_id = params[:activity_id]
     state = params[:state]
 
@@ -42,28 +44,10 @@ class UsersController < ApplicationController
   def pre_event_tag_details
     user_id = params[:id]
     tag_id = params[:tag_id]
-    current_friend_ids = params[:current_friend_ids].map{|friend_id| friend_id.to_i}
-    arr = [
-      {
-        user_id: 3, # id of the User in our database
-        user_name: "Mr. Kaboodle",
-        user_profile_pic: "http:www.picture...",
-        activity: "description 111 #eat"
-      },
-      {
-        user_id: 5,
-        user_name: "Ms. Panther",
-        user_profile_pic: "http:www.picture...",
-        activity: "description2 #football"
-      },
-      {
-        user_id: 7,
-        user_name: "Ms. Brazen",
-        user_profile_pic: "http:www.picture...",
-        activity: "description3 #mountainclimbing boo"
-      }
-    ]
-    render json: arr
+    old_arr = (params[:current_friend_ids] || []).map{|friend_id| friend_id.to_i}
+    complete_new_arr = Tag.get_all_activities_with_tag(tag_id,user_id)
+    instructions  = ListCommander.give_instructions(old_arr, complete_new_arr)
+    render json: instructions
   end
 
   def dashie
