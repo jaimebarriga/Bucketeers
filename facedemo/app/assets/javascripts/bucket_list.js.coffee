@@ -79,11 +79,27 @@ $('.complete').on('click', ( ->
 $('#add-new-item').on('submit', ( ->
   input = $(this).find('input');
   value = input.val();
-  input.val("");
-  html = '<li><div class="view"><input class="toggle" type="checkbox">' +
-         '<label>'+value+'</label></div><form><input class="edit" type="text">'+
+
+  dataSend = 
+    'activity': value
+  $.ajax
+    url: "/users/"+$('#user_id').text()+"/add_activity"
+    data: dataSend
+    type: "POST"
+    success: (data) ->
+      state = data.state
+      if state=="success"
+        value = data.activity
+        tag = data.tag
+        input.val("");
+        html = '<li data-id="'+data.activity_id.toString()+'"><div class="view"><input class="toggle" type="checkbox">' +
+         '<label>'+value+' <a class="hashtag">'+data.tag+'</a></label></div><form><input class="edit" type="text">'+
          '</form></li>'
-  $('#todo-list').append(html);
+        $('#todo-list').append(html);
+      else if state =="failure"
+        alert("Failure")
+    error: (xhr, error) ->
+      alert(error)
 
   return false
 ));
