@@ -1,25 +1,116 @@
 - content_for :title, "Dashboard"
 
-= render "authentication_facebook"
-
-
-%h4
-  = "Profile"
-%p
-  = @user.profile
-
-%h4
-  = "Friends"
-%p
-  = @user.friends
-
-%h4
-  = "Friends Who Installed App"
-%p
-  = @user.friends_who_installed_app
-
-
-
-= render "bucket_list"
-= render "friend_activities"
-= render "templates/friend_activity"
+#global-container
+	%header.dashboard-header
+		.left
+			%span=current_user.name
+		%a#sign_out{:href => signout_path}
+			= "Sign out"
+	%div.page-wrap
+		%section.your-bucket-list
+			%div.list
+				%header#header
+					%form#bucket-list-form{:autocomplete => "off"}
+						%input.bucket-list-explore{:autofocus => "", :placeholder => "What do I want to do?"}
+				%section.items
+					%ul#todo-list
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Join interBucket
+							%form
+								%input.edit{:disabled => "", :type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Make your own bucket list
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Share it with friends
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Find friends with common items
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Start completing your bucket list
+							%form
+								%input.edit{:type => "text"}
+						%li.completed
+							.view
+								%input.toggle{:checked => "", :type => "checkbox"}
+									%label Be Awesome
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Make your own bucket list
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Share it with friends
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Find friends with common items
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Start completing your bucket list
+							%form
+								%input.edit{:type => "text"}
+						%li.completed
+							.view
+								%input.toggle{:checked => "", :type => "checkbox"}
+									%label Be Awesome
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Make your own bucket list
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Share it with friends
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Find friends with common items
+							%form
+								%input.edit{:type => "text"}
+						%li
+							.view
+								%input.toggle{:disabled => "", :type => "checkbox"}
+									%label Start completing your bucket list
+							%form
+								%input.edit{:type => "text"}
+						%li.completed
+							.view
+								%input.toggle{:checked => "", :type => "checkbox"}
+									%label Be Awesome
+							%form
+								%input.edit{:type => "text"}
+		%section.dashboard
+			= render "bucket_list"
+			= render "friend_activities"
+			= render "templates/friend_activity"
