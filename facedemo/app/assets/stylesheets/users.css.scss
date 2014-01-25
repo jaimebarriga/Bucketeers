@@ -674,7 +674,24 @@ $image-dimensions: 50px;
 	-moz-box-shadow:    0 0 10px #000000;
    	box-shadow: 0 0 10px #000000;
    	border-left: rgba(0,0,0,0.18);
+   	overflow-y: scroll;
+
+   	ul {
+   		list-style-type: none;
+   	}
+
+   	.suggest {
+   		font-background: #ececec;
+   		border: 1px solid #ddd;
+   		padding: 20px 0;
+   		font-size: 12px;
+   		.name {
+			font-weight: bold;
+   		}
+   	}
 }
+
+
 
 @media (max-width: 1000px){
 	.page-wrap {
