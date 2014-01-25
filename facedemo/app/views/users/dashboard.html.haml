@@ -15,24 +15,13 @@
 						%input.bucket-list-explore{:autofocus => "", :placeholder => "What do I want to do?"}
 				%section.items
 					%ul#todo-list
-						%li
-							.view
-								%input.toggle{:type => "checkbox"}
-									%label Join interBucket
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:type => "checkbox"}
-									%label Make your own bucket list
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:type => "checkbox"}
-									%label Share it with friends
-							%form
-								%input.edit{:type => "text"}
+						- @activities.each do |activity|
+							%li
+								.view
+									%input.toggle{:type => "checkbox"}
+										%label=activity.desc
+									%form
+										%input.edit{:type => "text"}
 		%section.dashboard
 			%header#tag-selected{:data => {'tag-id' => 1}}
 				%a.hashtag= "#skiing"

@@ -413,6 +413,8 @@ label[for='toggle-all'] {
 	margin: 0;
 	padding: 0;
 	height: 50px;
+	font-weight:bold;
+	font-family: 'Proxima Nova';
 	background: rgb(32,56,92); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(32,56,92,1) 0%, rgba(38,59,89,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(32,56,92,1)), color-stop(100%,rgba(38,59,89,1))); /* Chrome,Safari4+ */
