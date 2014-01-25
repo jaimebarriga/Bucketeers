@@ -11,106 +11,31 @@
 		%section.your-bucket-list
 			%div.list
 				%header#header
-					%form#bucket-list-form{:autocomplete => "off"}
+					%form#add-new-item{:autocomplete => "off"}
 						%input.bucket-list-explore{:autofocus => "", :placeholder => "What do I want to do?"}
 				%section.items
 					%ul#todo-list
 						%li
 							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
+								%input.toggle{:type => "checkbox"}
 									%label Join interBucket
 							%form
-								%input.edit{:disabled => "", :type => "text"}
+								%input.edit{:type => "text"}
 						%li
 							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
+								%input.toggle{:type => "checkbox"}
 									%label Make your own bucket list
 							%form
 								%input.edit{:type => "text"}
 						%li
 							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
+								%input.toggle{:type => "checkbox"}
 									%label Share it with friends
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Find friends with common items
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Start completing your bucket list
-							%form
-								%input.edit{:type => "text"}
-						%li.completed
-							.view
-								%input.toggle{:checked => "", :type => "checkbox"}
-									%label Be Awesome
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Make your own bucket list
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Share it with friends
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Find friends with common items
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Start completing your bucket list
-							%form
-								%input.edit{:type => "text"}
-						%li.completed
-							.view
-								%input.toggle{:checked => "", :type => "checkbox"}
-									%label Be Awesome
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Make your own bucket list
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Share it with friends
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Find friends with common items
-							%form
-								%input.edit{:type => "text"}
-						%li
-							.view
-								%input.toggle{:disabled => "", :type => "checkbox"}
-									%label Start completing your bucket list
-							%form
-								%input.edit{:type => "text"}
-						%li.completed
-							.view
-								%input.toggle{:checked => "", :type => "checkbox"}
-									%label Be Awesome
 							%form
 								%input.edit{:type => "text"}
 		%section.dashboard
 			= render "friend_activities"
 			= render "templates/friend_activity"
+		%div.vertical-line
+		%section.suggestions
+			Hi
