@@ -17,11 +17,12 @@ class UsersController < ApplicationController
     activity_obj = Activity.save_activity!(activity,user_id) # creates a new Tag if needed
     if activity_obj.blank?
       render json: { state: "failure", activity: activity}
+    else
+      tag_obj = Tag.find(activity_obj.tag_id)
+      activity = activity.downcase
+      activity.slice! (tag_obj.name)
+      render json: { state: "success", activity: activity, activity_id: activity_obj.id, tag: tag_obj.name }
     end
-    tag_obj = Tag.find(activity_obj.tag_id)
-    activity = activity.downcase
-    activity.slice! (tag_obj.name)
-    render json: { state: "success", activity: activity, activity_id: activity_obj.id, tag: tag_obj.name }
   end
 
   def all_activities
