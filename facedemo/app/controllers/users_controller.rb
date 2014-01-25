@@ -19,8 +19,8 @@ class UsersController < ApplicationController
       render json: { state: "failure", activity: activity}
     else
       tag_obj = Tag.find(activity_obj.tag_id)
-      # activity.slice! (/#\S+/)
-      render json: { state: "success", activity: activity, activity_id: activity_obj.id, tag: tag_obj.name }
+
+      render json: { state: "success", activity: activity, activity_id: activity_obj.id, tag: tag_obj.name, tag_id: tag_obj.id }
     end
   end
 
