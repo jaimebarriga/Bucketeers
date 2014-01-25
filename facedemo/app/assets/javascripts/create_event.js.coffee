@@ -10,13 +10,13 @@ poll1 = () ->
     type: "POST"
     data: data_to_send
     success: (data) ->
-      console.log('poll')
+      # console.log('poll')
       jQuery.each data, (i, instruction) ->
-        console.log(instruction[0])
         if instruction[0] == "add"
           add_friend_activity(instruction[1],instruction[2])
         if instruction[0] == "delete"
           delete_friend_activity(instruction[1])
+      show_or_hide_create_event_button()
       setTimeout (-> poll1() ), POLL_DELAY
 
     error: (data) ->
@@ -43,6 +43,16 @@ $('#friend-activities').on('click', '#create_event_button', ( ->
 ));
 
 # Helper Functions
+
+show_or_hide_create_event_button = () ->
+  if get_current_friend_uids().length == 0
+    console.log('hide')
+    console.log(get_current_friend_uids())
+    $('#create_event_button').hide()
+  else
+    console.log('show')
+    console.log(get_current_friend_uids())
+    $('#create_event_button').show()
 
 get_tag_id_selected = () ->
   $('#tag-selected').attr('data-tag-id')
