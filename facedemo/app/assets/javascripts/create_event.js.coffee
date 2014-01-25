@@ -19,18 +19,18 @@ poll1 = () ->
       # setTimeout (-> poll1(USER_ID) ), POLL_DELAY
 
 
-poll2 = () ->
-  $.ajax
-    url: "/users/#{USER_ID}/add_activity"
-    type: "POST"
-    data: { activity: "boo #boo" }
-    success: (data) ->
-      # console.log("poll2")
-      setTimeout (-> poll2() ), POLL_DELAY
+# poll2 = () ->
+#   $.ajax
+#     url: "/users/#{USER_ID}/add_activity"
+#     type: "POST"
+#     data: { activity: "boo #boo" }
+#     success: (data) ->
+#       # console.log("poll2")
+#       setTimeout (-> poll2() ), POLL_DELAY
 
 
-setTimeout (-> poll1(USER_ID) ), 0
-setTimeout (-> poll2(USER_ID) ), POLL_DELAY
+# setTimeout (-> poll1(USER_ID) ), 0
+# setTimeout (-> poll2(USER_ID) ), POLL_DELAY
 
 
 # Helper Functions
