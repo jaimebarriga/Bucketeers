@@ -14,8 +14,9 @@ development:
   database: facedemo_development
   pool: 5
   username: root
-  password: mynewpassword
-  socket:
+  password:
+  socket: /tmp/mysql.sock
+
 #/tmp/mysql.sock
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
