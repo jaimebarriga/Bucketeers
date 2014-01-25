@@ -89,6 +89,7 @@ $('#add-new-item').on('submit', ( ->
     success: (data) ->
       state = data.state
       if state=="success"
+        console.log(data)
         value = data.activity
         tag = data.tag
         input.val("");
@@ -97,7 +98,9 @@ $('#add-new-item').on('submit', ( ->
          '</form></li>'
         $('#todo-list').append(html);
       else if state =="failure"
-        alert("Failure")
+        console.log(data)
+        console.log("Oops, you already have that")
+        input.val("");
     error: (xhr, error) ->
       alert(error)
 

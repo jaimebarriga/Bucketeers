@@ -40,7 +40,7 @@ poll1 = () ->
 #       setTimeout (-> poll2() ), POLL_DELAY
 
 
-setTimeout (-> poll1(USER_ID) ), 0
+# setTimeout (-> poll1(USER_ID) ), 0
 # setTimeout (-> poll2(USER_ID) ), POLL_DELAY
 
 
