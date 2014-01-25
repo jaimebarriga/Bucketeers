@@ -15,7 +15,7 @@ search_places = (activity_name) ->
     url: "/users/search_places?name=#{activity_name}&country=Canada"
     type: "GET"
     success: (data) ->
-      console.log(data)
+      # console.log(data)
       string = generateString(data)
       $('.suggestions').html(string);
 
