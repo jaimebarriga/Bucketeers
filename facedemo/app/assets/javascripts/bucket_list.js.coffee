@@ -93,9 +93,13 @@ $('#add-new-item').on('submit', ( ->
         tag = data.tag
         input.val("");
         html = '<li data-id="'+data.activity_id.toString()+'"><div class="view"><input class="toggle" type="checkbox">' +
-         '<label>'+value+' <span class="hashtag">'+data.tag+'</span></label></div><form><input class="edit" type="text">'+
+         '<label>'+value+' <a class="hashtag">'+data.tag+'</a></label></div><form><input class="edit" type="text">'+
          '</form></li>'
         $('#todo-list').append(html);
+      else if state =="failure"
+        alert("Failure")
+    error: (xhr, error) ->
+      alert(error)
 
   return false
 ));

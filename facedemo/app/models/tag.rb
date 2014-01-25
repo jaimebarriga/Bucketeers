@@ -18,13 +18,13 @@ class Tag < ActiveRecord::Base
 
   # This function is calld to increment score by activity if a activity is deleted.
   def self.change_score_down(tag_id)
-  	tag = Tag.find_by_id(tag_id)
-  	if (tag.score == 0)
-  		return tag.score
-  	end
-  	tag.score -= 1
-  	tag.save
-  	return tag.score
+    tag = Tag.find_by_id(tag_id)
+    if (tag.score == 0)
+      return tag.score
+    end
+    tag.score -= 1
+    tag.save
+    return tag.score
   end
 
   # This function will be used for our "middle" column
@@ -70,6 +70,6 @@ class Tag < ActiveRecord::Base
   end
 
   def self.find_or_create_tag(tag_name)
-  	return Tag.find_by_name(tag_name) || Tag.create(:name => tag_name)
+    return Tag.find_by_name(tag_name) || Tag.create(:name => tag_name)
    end
 end
