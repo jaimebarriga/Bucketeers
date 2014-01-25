@@ -34,6 +34,7 @@
 							%form
 								%input.edit{:type => "text"}
 		%section.dashboard
+			%header#tag-selected{:data => {'tag-id' => 1}}= "#skiing"
 			= render "friend_activities"
 			= render "templates/friend_activity"
 		%div.vertical-line

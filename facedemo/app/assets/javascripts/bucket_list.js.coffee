@@ -87,7 +87,15 @@ $('#add-new-item').on('submit', ( ->
     data: dataSend
     type: "POST"
     success: (data) ->
-      console.log(JSON.stringify(data))
+      state = data.state
+      if state=="success"
+        value = data.activity
+        tag = data.tag
+        input.val("");
+        html = '<li data-id="'+data.activity_id.toString()+'"><div class="view"><input class="toggle" type="checkbox">' +
+         '<label>'+value+' <span class="hashtag">'+data.tag+'</span></label></div><form><input class="edit" type="text">'+
+         '</form></li>'
+        $('#todo-list').append(html);
 
   return false
 ));

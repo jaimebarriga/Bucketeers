@@ -514,6 +514,10 @@ label[for='toggle-all'] {
 	overflow-y: scroll;
 }
 
+#tag-selected {
+	padding-left: 200px;
+}
+
 $image-dimensions: 50px;
 
 #friend-activities {
@@ -568,12 +572,12 @@ $image-dimensions: 50px;
 			background-color: #aaa;
 			top: -8px;
 			left: -8px;
-			-webkit-transition: all 1s linear;
-    -o-transition: all 1s linear;
-    -moz-transition: all 1s linear;
-    -ms-transition: all 1s linear;
-    -kthtml-transition: all 1s linear;
-    transition: all 1s linear;
+			-webkit-transition: all 0.2s linear;
+		    -o-transition: all 0.2s linear;
+		    -moz-transition: all 0.2s linear;
+		    -ms-transition: all 0.2s linear;
+		    -kthtml-transition: all 0.2s linear;
+		    transition: all 0.2s linear;
 		}
 
 		img {
@@ -586,6 +590,7 @@ $image-dimensions: 50px;
 			top: 0;
 			left: 0;
 			z-index: 1;
+			cursor: pointer;
 		}
 	}
 	.user-name {
