@@ -1,24 +1,27 @@
-POLL_DELAY = 5000
+POLL_DELAY = 750
 USER_ID = $('#user_id').text()
 
 poll1 = () ->
   current_friend_ids = get_current_friend_ids()
-  tag_id = 1 # HACK
+  tag_id = get_tag_id_selected()
   data_to_send = { tag_id: tag_id, current_friend_ids: current_friend_ids }
   $.ajax
     url: "/users/#{USER_ID}/pre_event_tag_details"
     type: "POST"
     data: data_to_send
     success: (data) ->
+      console.log('poll')
       jQuery.each data, (i, instruction) ->
         console.log(instruction[0])
         if instruction[0] == "add"
           add_friend_activity(instruction[1],instruction[2])
         if instruction[0] == "delete"
           delete_friend_activity(instruction[1])
+      setTimeout (-> poll1() ), POLL_DELAY
 
     error: (data) ->
       console.log("error!")
+      setTimeout (-> poll1() ), POLL_DELAY
 
 setTimeout (-> poll1(USER_ID) ), 0
 
@@ -40,6 +43,9 @@ $('#friend-activities').on('click', '#create_event_button', ( ->
 ));
 
 # Helper Functions
+
+get_tag_id_selected = () ->
+  $('#tag-selected').attr('data-tag-id')
 
 get_current_friend_uids = () ->
   user_uid_objects = $('#friend-activities .selected .user-uid')
