@@ -671,24 +671,62 @@ $image-dimensions: 50px;
 	bottom: 0;
 	right: 0;
 	width: 200px;
-	background-color: darken(#edeff4,15%);
+	background-color: darken(#edeff4,5%);
    	-webkit-box-shadow: 0 0 10px #000000;
 	-moz-box-shadow:    0 0 10px #000000;
    	box-shadow: 0 0 10px #000000;
    	border-left: rgba(0,0,0,0.18);
    	overflow-y: scroll;
+   	border: 2px solid $blue;
+   	padding: 10px;
 
    	ul {
    		list-style-type: none;
    	}
 
    	.suggest {
-   		font-background: #ececec;
-   		border: 1px solid #ddd;
-   		padding: 20px 0;
+   		position: relative;
+   		background-color: white;
+   		border: 1px solid #ccc;
+   		padding: 20px 5px;
    		font-size: 12px;
+   		margin-bottom: 10px;
+   		-webkit-border-radius: 4px;
+   		-moz-border-radius: 4px;
+   		border-radius: 4px;
+   		text-align: center;
    		.name {
 			font-weight: bold;
+   		}
+   		.overlay {
+   			display: none;
+   			position: absolute;
+   			width: 100%;
+   			height: 100%;
+   			top: 0;
+   			left: 0;
+   			bottom: 0;
+   			right: 0;
+   			background-color: rgba(0,0,0,0.7);
+   			cursor: pointer;
+
+   			i {
+   				color: white;
+   				height: 30px;
+   				width: 30px;
+   				font-size: 30px;
+   				position: absolute;
+   				top: 0;
+   				bottom: 0;
+   				left: 0;
+   				right: 0;
+   				margin: auto;
+   			}
+   		}
+   		&:hover {
+   			.overlay {
+   				display: block;
+   			}
    		}
    	}
 }

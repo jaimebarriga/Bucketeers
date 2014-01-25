@@ -1,7 +1,11 @@
 generateString = (array) ->
   string = "<ul>"
   $.each array, (i, object) ->
-    string += "<li class='suggest'>" + "<div class='name'>" + " " + object.name + "</div><div class='location'>" + object.location.city + ", " + object.location.country + "</div></li>"
+    string += "<li class='suggest'><div class='name'>"  + object.name + "</div>"
+    string += "<div class='location'>" + object.location.city + ", " + object.location.country + "</div>"
+    string += "<div class='overlay'>"
+    string += "<a href='https://www.google.com/maps/preview/place/"+object.location.latitude+","+object.location.longitude
+    string += "' target='_blank'><i class='fa fa-location-arrow'></i></a></div></li>"
   string += "</ul>"
   return string
 

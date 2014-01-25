@@ -81,6 +81,7 @@ put_link_to_hashtag = (str) ->
 $('#add-new-item').on('submit', ( ->
   input = $(this).find('input');
   value = input.val();
+  console.log("starting")
 
   dataSend = 
     'activity': value
