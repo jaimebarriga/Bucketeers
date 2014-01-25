@@ -47,8 +47,14 @@ class UsersController < ApplicationController
     tag_id = params[:tag_id]
     old_arr = (params[:current_friend_ids] || []).map{|friend_id| friend_id.to_i}
     complete_new_arr = Tag.get_all_activities_with_tag(tag_id,user_id)
-    instructions  = ListCommander.give_instructions(old_arr, complete_new_arr)
+    instructions = ListCommander.give_instructions(old_arr, complete_new_arr)
     render json: instructions
+  end
+
+  def create_event
+    user = User.find(params[:id])
+    event = user.create_event(params[:name], params[:date], params[:current_friend_uids])
+    render json: event
   end
 
   def dashie

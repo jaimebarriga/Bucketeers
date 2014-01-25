@@ -114,7 +114,7 @@ $('.your-bucket-list').on('click', '.toggle', ( ->
     $this.prop('checked', false)
 ));
 
-$('.user-profile-pic').on('click', ( -> 
+$('#friend-activities').on('click', '.user-profile-pic', ( ->
   $(this).parent().toggleClass('selected')
 ));
 
