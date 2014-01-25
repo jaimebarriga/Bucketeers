@@ -17,7 +17,7 @@ search_places = (activity_name) ->
     success: (data) ->
       # console.log(data)
       string = generateString(data)
-      $('.suggestions').html(string);
+      $('.suggestions .content').html(string);
 
 put_link_to_hashtag = (str) ->
   return str.replace(/#\S+/, "<a class='hashtag'>$&</a>")

@@ -1,4 +1,9 @@
 $blue: #20385c;
+* {
+	::-webkit-scrollbar {
+		display: none;
+	}
+}
 
 html, body {
     height: 100%;
@@ -672,13 +677,13 @@ $image-dimensions: 50px;
 	right: 0;
 	width: 200px;
 	background-color: darken(#edeff4,5%);
-   	-webkit-box-shadow: 0 0 10px #000000;
-	-moz-box-shadow:    0 0 10px #000000;
-   	box-shadow: 0 0 10px #000000;
+ //   	-webkit-box-shadow: 0 0 10px #000000;
+	// -moz-box-shadow:    0 0 10px #000000;
+ //   	box-shadow: 0 0 10px #000000;
    	border-left: rgba(0,0,0,0.18);
-   	overflow-y: scroll;
-   	border: 2px solid $blue;
+   	//border: 2px solid $blue;
    	padding: 10px;
+   	padding-top: 30px;
 
    	ul {
    		list-style-type: none;
@@ -737,6 +742,26 @@ $image-dimensions: 50px;
    			}
    		}
    	}
+
+   	.sug_title {
+   		position: absolute;
+   		top: 0;
+   		left: 0;
+   		right: 0;
+   		height: 30px;
+   		text-align: center;
+   		font-size: 18px;
+   		color: lighten($blue, 15%);
+   	}
+   	.content {
+   		position: absolute;
+   		top: 30px;
+   		left:0;
+   		right: 0;
+   		bottom: 0;
+   		overflow-y: scroll;
+   		padding: 0 10px;
+   	}
 }
 
 
@@ -753,7 +778,13 @@ $image-dimensions: 50px;
 	float: right;
 	line-height: 50px;
 	color: white;
-	padding-right: 10px;
+	padding: 0 10px;
+	border: 1px solid lighten($blue, 5%);
+	background-color: lighten($blue, 5%);
+
+	&:hover {
+		background-color: darken($blue, 5%)
+	}
 }
 
 #myModal .text {
