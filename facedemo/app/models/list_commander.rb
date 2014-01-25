@@ -3,8 +3,9 @@ class ListCommander
 # add(id_below, content)
 # delete(id)
 
-  def self.give_instructions(old_arr, new_arr)
+  def self.give_instructions(old_arr, complete_new_arr)
 
+    new_arr = complete_new_arr.map{|a| a[:user_id]}
     old_i = 0
     new_i = 0
     old_length = old_arr.count
@@ -17,7 +18,7 @@ class ListCommander
         inst << ["delete",old_arr[old_i]]
         old_i+=1
       elsif (old_arr[old_i] > new_arr[new_i])
-        inst << ["add",old_arr[old_i],new_arr[new_i]]
+        inst << ["add",old_arr[old_i],complete_new_arr[new_i]]
         new_i+=1
       else
         old_i+=1
@@ -29,7 +30,7 @@ class ListCommander
       # reached max of old_list
       # append the rest
       (new_i..new_length-1).each do |c|
-        inst << ["add",-1,new_arr[c]]
+        inst << ["add",-1,complete_new_arr[c]]
       end
     elsif (new_i == new_length)
       (old_i..old_length-1).each do |c|

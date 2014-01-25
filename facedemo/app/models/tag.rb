@@ -55,15 +55,15 @@ class Tag < ActiveRecord::Base
   		
   		if activity.user_id == user.id
   			# Adding current users info and his activity info
-  			response << {user_id: user.uid, user_name: user.name, description: activity.desc}
+  			response << {user_id: user.id, user_name: user.name, description: activity.desc}
   		end
 
   		puts activity.desc
   		tag_matched_user = activity.user
-  		is_match_with_friends = user_friends.detect {|friend| friend["id"] == tag_matched_user.uid }
+  		is_match_with_friends = user_friends.detect {|friend| friend["id"] == tag_matched_user.id }
   		unless is_match_with_friends.blank?
   			# Adding all the friend users info and their activity info
-  			response << {user_id: tag_matched_user.uid, user_name: tag_matched_user.name, description: activity.desc}
+  			response << {user_id: tag_matched_user.id, user_name: tag_matched_user.name, description: activity.desc}
   		end
   	end
 
