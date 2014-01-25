@@ -10,7 +10,6 @@ put_link_to_hashtag = (str) ->
   return str.replace(/#\S+/, "<a class='hashtag'>$&</a>")
 
 $(document).on('click', '#todo-list li', ( ->
-  $(".friend-activity.intro").remove()
   tag_id = $(this).attr('data-tag-id')
   tag_name = $(this).find(".hashtag").text()
   $('#tag-selected').html(put_link_to_hashtag(tag_name))
