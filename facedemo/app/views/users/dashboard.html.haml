@@ -4,8 +4,7 @@
 	%header.dashboard-header
 		.left
 			%span=current_user.name
-		%a#sign_out{:href => signout_path}
-			= "Sign out"
+		%a#sign_out{:href => signout_path}= "Sign out"
 		%p#user_id{:hidden => ""}= current_user.id
 	%div.page-wrap
 		%section.your-bucket-list
@@ -27,6 +26,24 @@
 				%a.hashtag= "#skiing"
 			= render "friend_activities"
 			= render "templates/friend_activity"
+			%div#myModal.reveal-modal{:data => {"reveal" => true}}
+				%a.close-reveal-modal
+				%form
+					.row.eventRow
+						.large-12.columns
+							%label Event name
+							%input{placeholder: "Enter a name for your event", type: "text", name: "eventName"}
+					.row.eventRow
+						.large-12.columns
+							%label Event date
+							%input{placeholder: "Enter a date for your event", type: "text", name: "eventDate"}
+				.facebook-container.createEvent
+					%a{:href => "#"}
+						#create_event_button.facebook-login
+							.spinner
+							.separator
+							.text= "Confirm"			
+			%button#addEvent{type: "button"} Add an Event
 		%div.vertical-line
 		%section.suggestions
 			Hi

@@ -10,7 +10,7 @@ poll1 = () ->
     type: "POST"
     data: data_to_send
     success: (data) ->
-      console.log('poll')
+      console.log(USER_ID)
       jQuery.each data, (i, instruction) ->
         console.log(instruction[0])
         if instruction[0] == "add"
@@ -20,16 +20,16 @@ poll1 = () ->
       setTimeout (-> poll1() ), POLL_DELAY
 
     error: (data) ->
-      console.log("error!")
+      console.log(USER_ID)
       setTimeout (-> poll1() ), POLL_DELAY
 
 setTimeout (-> poll1(USER_ID) ), 0
 
 
-$('#friend-activities').on('click', '#create_event_button', ( ->
+$(document).on('click', '#create_event_button', ( ->
   current_friend_uids = get_current_friend_uids()
-  name = "Pseudo Event" # HACK
-  date = "2014-02-17" # HACK
+  name = $('input[name="eventName"]').val() # HACK
+  date = $('input[name="eventDate"]').val() # HACK
   data_to_send = { name: name, date: date, current_friend_uids: current_friend_uids }
   console.log(data_to_send)
   $.ajax
@@ -38,6 +38,7 @@ $('#friend-activities').on('click', '#create_event_button', ( ->
     data: data_to_send
     success: (data) ->
       console.log(data)
+      $('#myModal').foundation('reveal', 'close');
     error: (data) ->
       console.log("error")
 ));
@@ -78,3 +79,7 @@ add_friend_activity = (activity_number_below,activity) ->
 delete_friend_activity = (user_id) ->
   friend_activity_to_delete = $("#friend-activities ul li .user-id:contains(#{user_id})").closest('li')
   friend_activity_to_delete.slideUp(500, -> $(this).remove())
+
+$('button').on('click', ( =>
+  $('#myModal').foundation('reveal', 'open');
+))
