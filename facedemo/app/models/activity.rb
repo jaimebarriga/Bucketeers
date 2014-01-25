@@ -39,6 +39,10 @@ class Activity < ActiveRecord::Base
     return "success"
   end
 
+  def description_with_link
+    self.desc.sub(/#\S+/, "<a class='hashtag'>#{self.desc.scan(/#\S+/).first}</a>")
+  end
+
   # Creates new activity and new tag also if necessary
   # e.g. If "#eat" never existed, create new tag with name "#eat"
   def self.save_activity!(description,user_id)
